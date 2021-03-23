@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/loginFragment">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/preloadFragment">
+    <include
+        app:graph="@navigation/auth_graph" />
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="ru.thstdio.feature_login.LoginFragment"
-        android:label="LoginFragment" />
+        android:id="@+id/preloadFragment"
+        android:name="ru.thstdio.movies4friends.PreloadFragment"
+        android:label="PreloadFragment" >
+
+    </fragment>
 </navigation>

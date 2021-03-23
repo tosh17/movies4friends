@@ -1,4 +1,4 @@
-package ru.thstdio.feature_login.impl.data
+package ru.thstdio.feature_login.impl.framework.result_contract
 
 import android.content.Context
 import android.content.Intent

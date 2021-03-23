@@ -1,4 +1,4 @@
 include ':module-injector'
-include ':feature-login'
+include ':feature-auth'
 include ':app'
 rootProject.name = "movies4friends"
