@@ -1,3 +1,6 @@
+include ':core-data'
+include ':core-resource'
+include ':core-auth'
 include ':module-injector'
 include ':feature-auth'
 include ':app'

@@ -5,42 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#191926">
-
-    <TextView
-        android:id="@+id/title1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:text="Movies"
-        android:textAlignment="textEnd"
-        android:textColor="#C2185B"
-        android:textSize="36sp"
-        app:layout_constraintEnd_toStartOf="@+id/title2"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/title2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="4"
-        android:textColor="#7B1FA2"
-        android:textSize="48sp"
-        app:layout_constraintBottom_toBottomOf="@+id/title1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title1" />
-
-    <TextView
-        android:id="@+id/title3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Friends"
-        android:textColor="#512DA8"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="@+id/title2"
-        app:layout_constraintStart_toEndOf="@+id/title2"
-        app:layout_constraintTop_toBottomOf="@+id/title2" />
+    android:background="#303032">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/login_form_login"
@@ -75,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="56dp"
         android:hint="Password"
         app:endIconMode="password_toggle"
         app:layout_constraintBottom_toTopOf="@+id/button_login"
@@ -86,11 +51,11 @@
             android:id="@+id/login_form_password_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/shape_card"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
-            android:textColor="#FFFFFF"
-            android:background="@drawable/shape_card"
             android:maxLines="1"
+            android:textColor="#FFFFFF"
             android:textSize="20sp"
             tools:text="123" />
 
@@ -100,7 +65,7 @@
         android:id="@+id/button_login"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="0dp"
-        android:layout_height="56dp"
+        android:layout_height="52dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
@@ -109,6 +74,7 @@
         android:textColor="#FFFFFF"
         app:backgroundTint="@null"
         app:cornerRadius="16dp"
+        app:elevation="5dp"
         app:layout_constraintBottom_toTopOf="@+id/button_google"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -116,7 +82,7 @@
         android:id="@+id/button_google"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="0dp"
-        android:layout_height="56dp"
+        android:layout_height="52dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="24dp"
@@ -132,4 +98,40 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:padding="8dp"
+        android:text="Forgot password"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/login_form_password"
+        app:layout_constraintTop_toBottomOf="@+id/login_form_password" />
+
+    <TextView
+        android:id="@+id/sing_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:text="SingUp"
+        android:padding="8dp"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/login_form_password"
+        app:layout_constraintTop_toBottomOf="@+id/login_form_password" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/login_form_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_logo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
