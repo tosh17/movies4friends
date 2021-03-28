@@ -1,20 +1,19 @@
 package ru.thstdio.feature_login.impl.presentation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.thstdio.core_auth.result_contract.GoogleAuthResultContract
+import ru.thstdio.feature_login.BuildConfig
 import ru.thstdio.feature_login.R
 import ru.thstdio.feature_login.databinding.LoginFragmentBinding
 import ru.thstdio.feature_login.impl.framework.di.AuthFeatureComponentHolder
+import ru.thstdio.feature_login.impl.presentation.dialogs.sing_up.SingUpDialog
 import javax.inject.Inject
 
 private const val GOOGLE_SIGN_IN: Int = 10234
-const val requestIdToken =
-    "695547972648-jf80uru7g60recjjt8mvjdtlkqb19p2e.apps.googleusercontent.com"
 
 class AuthFragment : Fragment(R.layout.login_fragment) {
 
@@ -24,7 +23,7 @@ class AuthFragment : Fragment(R.layout.login_fragment) {
         ViewModelProvider(this, viewModelFactory).get(AuthViewModel::class.java)
     }
     private val googleCallBack = registerForActivityResult(
-        GoogleAuthResultContract(requestIdToken)
+        GoogleAuthResultContract(BuildConfig.GOOGLE_REQUEST_ID_TOKEN)
     )
     { token -> onGoogleCallBack(token) }
 
@@ -37,8 +36,12 @@ class AuthFragment : Fragment(R.layout.login_fragment) {
             googleCallBack.launch(GOOGLE_SIGN_IN)
         }
         binding.buttonLogin.setOnClickListener {
-            // signInWithEmailAndPassword("tosh17@list.ru", "123456")
+            val login = binding.loginFormLoginEdit.text.toString()
+            val password = binding.loginFormPasswordEdit.text.toString()
+            viewModel.onClickSingIn(login, password)
         }
+        binding.forgotPassword.setOnClickListener { }
+        binding.singUp.setOnClickListener { SingUpDialog().show(parentFragmentManager,"123")}
     }
 
     private fun onGoogleCallBack(token: String?) {

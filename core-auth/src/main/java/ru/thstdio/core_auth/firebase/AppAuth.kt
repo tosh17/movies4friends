@@ -40,7 +40,7 @@ class AppAuth {
 
     }
 
-    fun signInWithEmailAndPassword(
+    fun singUpWithEmailAndPassword(
         email: String,
         password: String,
         callback: (FireBaseAuthResult) -> Unit
@@ -62,7 +62,7 @@ class AppAuth {
             }
     }
 
-    fun singUpWithEmailAndPassword(
+    fun signInWithEmailAndPassword(
         email: String,
         password: String,
         callback: (FireBaseAuthResult) -> Unit

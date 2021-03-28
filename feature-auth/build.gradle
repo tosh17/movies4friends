@@ -16,6 +16,12 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
+        Properties properties = new Properties()
+        if (rootProject.file("local.properties").exists()) {
+            properties.load(rootProject.file("local.properties").newDataInputStream())
+        }
+        buildConfigField "String", "GOOGLE_REQUEST_ID_TOKEN", properties.getProperty("GOOGLE_REQUEST_ID_TOKEN", "")
     }
 
     buildTypes {
