@@ -1,3 +1,4 @@
+include ':feature-movies'
 include ':core-ui-util'
 include ':core-remote-db'
 include ':core-local-db'
