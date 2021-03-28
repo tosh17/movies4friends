@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#303032">
+    android:background="@color/bg_primary">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/login_form_login"
@@ -16,6 +16,8 @@
         android:layout_marginBottom="16dp"
         android:hint="Login"
         android:maxLines="1"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
         app:layout_constraintBottom_toTopOf="@+id/login_form_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +31,7 @@
             android:maxLines="1"
             android:background="@drawable/shape_card"
             android:singleLine="true"
-            android:textSize="20sp"
+            android:textSize="18sp"
             tools:text="m_d@test.ru" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -56,8 +58,8 @@
             android:inputType="textPassword"
             android:maxLines="1"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            tools:text="123" />
+            android:textSize="18sp"
+            tools:text="pasword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         if (auth.currentUser == null) {
             router.openAuth()
         } else {
-            router.openAuth()
+            router.startMainScreen()
         }
 
 //        val options = FirebaseOptions.Builder()

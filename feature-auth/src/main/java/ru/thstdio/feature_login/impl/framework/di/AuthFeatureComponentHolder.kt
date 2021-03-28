@@ -6,7 +6,7 @@ import ru.thstdio.module_injector.ComponentHolder
 
 object AuthFeatureComponentHolder  : ComponentHolder<AuthFeatureApi, AuthFeatureDependencies> {
     private var component: AuthFeatureComponent? = null
-    private val TAG = "AuthFeatureComponentHolder"
+    private const val TAG = "AuthFeature"
 
     override fun init(dependencies: AuthFeatureDependencies) {
         Log.i(TAG, "init()")

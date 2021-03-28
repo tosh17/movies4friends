@@ -63,6 +63,7 @@ dependencies {
     implementation(project(':core-network'))
 
     implementation(project(':feature-auth'))
+    implementation(project(':feature-movies'))
 
     implementation 'com.google.android.material:material:1.4.0-alpha01'
 

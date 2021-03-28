@@ -2,11 +2,16 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:dither="false">
 
+    <stroke android:color="@color/dark_gray"
+        android:width="1dp"
+        android:dashGap="@dimen/cardview_default_elevation"/>
     <gradient
-        android:startColor="#808088"
-        android:endColor="#4B4B4E"
+        android:startColor="@color/light_grey"
+        android:centerColor="@color/dark_gray"
+        android:endColor="@color/bg_primary"
+        android:centerX="80%"
         />
     <!--border color and border width-->
-    <corners android:radius="16dp" />
+    <corners android:radius="8dp" />
 
 </shape>

@@ -10,5 +10,5 @@ import ru.thstdio.module_injector.di.PerFeature
 internal abstract class AuthFeatureModule {
     @PerFeature
     @Binds
-    abstract fun provideMapStarter(starter: AuthFeatureStarterImpl): AuthFeatureStarter
+    abstract fun provideAuthStarter(starter: AuthFeatureStarterImpl): AuthFeatureStarter
 }
