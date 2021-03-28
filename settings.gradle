@@ -1,3 +1,7 @@
+include ':core-ui-util'
+include ':core-remote-db'
+include ':core-local-db'
+include ':core-network'
 include ':core-data'
 include ':core-resource'
 include ':core-auth'

@@ -55,6 +55,13 @@ apply from: "$project.rootDir/deps/deps_version.gradle"
 
 dependencies {
     implementation(project(':module-injector'))
+    implementation(project(':core-data'))
+    implementation(project(':core-resource'))
+    implementation(project(':core-ui-util'))
+    implementation(project(':core-local-db'))
+    implementation(project(':core-remote-db'))
+    implementation(project(':core-network'))
+
     implementation(project(':feature-auth'))
 
     implementation 'com.google.android.material:material:1.4.0-alpha01'
