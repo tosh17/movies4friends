@@ -7,6 +7,7 @@ ext.versions = [
         kotlinx_serialization_convertor: "0.8.0",
         dagger                         : "2.33",
         room                           : "2.3.0-beta02",
+        coil                           : "1.1.0"
 ]
 ext.view_binding = "com.github.kirich1409:viewbindingpropertydelegate-noreflection:$versions.viewbinding"
 ext.coroutines = [
@@ -38,3 +39,5 @@ ext.firebase = [
 ext.play_services = [
         auth: "com.google.android.gms:play-services-auth:19.0.0"
 ]
+ext.coil ="io.coil-kt:coil:$versions.coil"
+

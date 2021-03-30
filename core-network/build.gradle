@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -15,6 +16,13 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+        Properties properties = new Properties()
+        if (rootProject.file("local.properties").exists()) {
+            properties.load(rootProject.file("local.properties").newDataInputStream())
+        }
+        buildConfigField "String", "THE_MOVIES_DB_API_KEY", properties.getProperty("THE_MOVIES_DB_API_KEY", "")
+        buildConfigField "String", "THE_MOVIES_DB_BASE_URL", properties.getProperty("THE_MOVIES_DB_BASE_URL", "")
+
     }
 
     buildTypes {
@@ -32,13 +40,18 @@ android {
     }
 }
 
+apply from: "$project.rootDir/deps/deps_version.gradle"
 dependencies {
+    //DI
+    implementation di.dagger
+    kapt di.dagger_kapt
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.3.0'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    //OkHttp + Retrofit
+    implementation http.okhttp
+    implementation http.retrofit
+    implementation http.logging_interceptor
+    //Kotlin Serialization
+    implementation http.serialization_json
+    implementation http.serialization_converter
+
 }

@@ -2,6 +2,8 @@ package ru.thstdio.movies4friends.framework.di
 
 import dagger.Module
 import dagger.Provides
+import retrofit2.Retrofit
+import ru.thstdio.core_network.iml.di.CoreNetworkComponent
 import ru.thstdio.feature_login.api.AuthFeatureApi
 import ru.thstdio.feature_login.impl.framework.di.AuthFeatureComponentHolder
 import ru.thstdio.feature_login.impl.framework.di.AuthFeatureDependencies
@@ -16,8 +18,8 @@ object FeatureModule {
     @Singleton
     @Provides
     fun provideAuthFeatureDependencies(
-   ): AuthFeatureDependencies {
-        return object : AuthFeatureDependencies{
+    ): AuthFeatureDependencies {
+        return object : AuthFeatureDependencies {
             override val remotesStorage: Any
                 get() = TODO("Not yet implemented")
             override val localStorage: Any
@@ -35,13 +37,12 @@ object FeatureModule {
     @Provides
     fun provideMoviesFeatureDependencies(
     ): MoviesFeatureDependencies {
-        return object : MoviesFeatureDependencies{
+        return object : MoviesFeatureDependencies {
             override val remotesStorage: Any
                 get() = TODO("Not yet implemented")
             override val localStorage: Any
                 get() = TODO("Not yet implemented")
-            override val networkClient: Any
-                get() = TODO("Not yet implemented")
+            override val networkClient: Retrofit = CoreNetworkComponent.get().getHttpClient()
         }
     }
 
