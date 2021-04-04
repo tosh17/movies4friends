@@ -11,7 +11,7 @@ internal interface TheMovieDbApi {
     suspend fun getConfiguration(): ConfigurationDto
 
     @GET("genre/movie/list")
-    suspend fun getGenresList( @Query("language") language: String = "ru"): GenresListDto
+    suspend fun getGenresList(@Query("language") language: String = "ru"): GenresListDto
 
     @GET("movie/now_playing")
     suspend fun getNowPlaying(
@@ -19,4 +19,21 @@ internal interface TheMovieDbApi {
         @Query("language") language: String = "ru"
     ): MoviesListDto
 
+    @GET("movie/popular")
+    suspend fun getPopular(
+        @Query("page") page: Int,
+        @Query("language") language: String = "ru"
+    ): MoviesListDto
+
+    @GET("movie/top_rated")
+    suspend fun getTopRated(
+        @Query("page") page: Int,
+        @Query("language") language: String = "ru"
+    ): MoviesListDto
+
+    @GET("movie/upcoming")
+    suspend fun getUpcoming(
+        @Query("page") page: Int,
+        @Query("language") language: String = "ru"
+    ): MoviesListDto
 }

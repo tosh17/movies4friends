@@ -3,10 +3,13 @@ package ru.thstdio.feature_movies.impl.data
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import ru.thstdio.core_data.domain.Genre
-import ru.thstdio.feature_movies.impl.domain.MoviesListWithTotalPage
+import ru.thstdio.feature_movies.impl.domain.MoviesListCollection
+import ru.thstdio.feature_movies.impl.domain.MoviesListResult
 import ru.thstdio.feature_movies.impl.domain.TheMoviesDbImageConfiguration
 import ru.thstdio.feature_movies.impl.framework.network.TheMovieDbApi
+import ru.thstdio.feature_movies.impl.framework.network.response.MoviesListDto
 import ru.thstdio.module_injector.di.PerFeature
+import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.atomic.AtomicReference
 import javax.inject.Inject
 
@@ -14,28 +17,54 @@ import javax.inject.Inject
 internal class Repository @Inject constructor(
     private val api: TheMovieDbApi
 ) {
-
+    private val moviesCollection = ConcurrentHashMap<MoviesListCollection, CacheMovies>()
     private val configurationAtomic: AtomicReference<TheMoviesDbImageConfiguration> =
         AtomicReference<TheMoviesDbImageConfiguration>()
     private val genresAtomic: AtomicReference<Map<Long, Genre>> =
         AtomicReference<Map<Long, Genre>>()
 
-    suspend fun getNowPlayingMovies(page: Int): MoviesListWithTotalPage =
+
+    suspend fun getMoviesListFromTheMovieDbApi(
+        type: MoviesListCollection,
+        page: Int
+    ): MoviesListResult =
         coroutineScope {
-            val configurationAndGenres = async { getConfigurationAndGenres() }
-            val responseAsync = async { api.getNowPlaying(page) }
-            val (configuration, genres) = configurationAndGenres.await()
-            val response = responseAsync.await()
-            MoviesListWithTotalPage(
-                list = response.results.map { movieDto ->
-                    movieDto.toMovies(
-                        configuration,
-                        genres
-                    )
-                },
-                totalPage = response.totalPages
-            )
+            val moviesCache = moviesCollection.getOrPut(type, { CacheMovies() })
+            if (moviesCache.lastPage >= page) {
+                MoviesListResult(
+                    list = moviesCache.getPage(page),
+                    isLastPage = moviesCache.totalPage == page
+                )
+            } else {
+                val configurationAndGenres = async { getConfigurationAndGenres() }
+                val responseAsync = async { getListTheMovieDbApi(type, page) }
+                val (configuration, genres) = configurationAndGenres.await()
+                val response = responseAsync.await()
+                val result = MoviesListResult(
+                    list = response.results.map { movieDto ->
+                        movieDto.toMovies(
+                            configuration,
+                            genres
+                        )
+                    },
+                    isLastPage = response.totalPages == page
+                )
+                moviesCache.savePage(page, result.list)
+                moviesCache.totalPage = response.totalPages
+                result
+            }
         }
+
+    private suspend fun getListTheMovieDbApi(type: MoviesListCollection, page: Int): MoviesListDto {
+        return when (type) {
+            MoviesListCollection.MoviesNowPlay -> api.getNowPlaying(page)
+            MoviesListCollection.MoviesPopular -> api.getPopular(page)
+            MoviesListCollection.MoviesTopRated -> api.getTopRated(page)
+            MoviesListCollection.MoviesUpcoming -> api.getUpcoming(page)
+            MoviesListCollection.MoviesM4FPopular -> TODO()
+            MoviesListCollection.MoviesM4FLatest -> TODO()
+        }
+    }
 
     private suspend fun getConfigurationAndGenres(): Pair<TheMoviesDbImageConfiguration, Map<Long, Genre>> =
         coroutineScope {

@@ -5,9 +5,9 @@ import ru.thstdio.feature_movies.impl.domain.MoviesListCollection
 import ru.thstdio.feature_movies.impl.domain.MoviesListResult
 import javax.inject.Inject
 
-internal class GetNowPlayingMovies @Inject constructor(private val repository: Repository) {
+internal class GetPopularMovies @Inject constructor(private val repository: Repository) {
     suspend operator fun invoke(page: Int): MoviesListResult {
-        return repository.getMoviesListFromTheMovieDbApi(MoviesListCollection.MoviesNowPlay, page)
+        return repository.getMoviesListFromTheMovieDbApi(MoviesListCollection.MoviesPopular, page)
     }
 
 }

@@ -13,8 +13,9 @@
 
 
     <color name="bg_primary">@color/primary</color>
-    <color name="text_back">@color/black_0_5</color>
-    <color name="text_white">@color/white</color>
+    <color name="text_back_primary">@color/black_0_5</color>
+    <color name="text_white_primary">@color/white</color>
+    <color name="text_white_secondary">@color/gray_400</color>
     <color name="text_title">@color/white_dark</color>
     <color name="text_tag">@color/pink_dark</color>
     <color name="star_enable">@color/pink</color>

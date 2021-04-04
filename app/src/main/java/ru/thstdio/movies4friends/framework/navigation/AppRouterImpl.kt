@@ -1,5 +1,7 @@
 package ru.thstdio.movies4friends.framework.navigation
 
+import android.os.Bundle
+import androidx.annotation.IdRes
 import androidx.navigation.NavController
 import ru.thstdio.feature_login.api.AuthFeatureApi
 import ru.thstdio.feature_movies.api.MoviesFeatureApi
@@ -22,6 +24,10 @@ class AppRouterImpl @Inject constructor(
     override fun startMainScreen() {
         val graph = moviesFeature.get().getMoviesFeatureStarter().getNavGraph(navController)
         navController.graph = graph
+    }
+
+    override fun openScreen(@IdRes screenId: Int, argument: Bundle) {
+        navController.navigate(screenId,argument)
     }
 
 }

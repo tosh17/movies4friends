@@ -2,6 +2,14 @@
 <resources>
     <dimen name="mini_text">8sp</dimen>
     <dimen name="small_text">12sp</dimen>
-    <dimen name="text_title">40sp</dimen>
+    <dimen name="text_title">24sp</dimen>
     <dimen name="text_subtitle">20sp</dimen>
+
+
+    <dimen name="text_menu_h1">28sp</dimen>
+    <dimen name="text_menu_h2">18sp</dimen>
+    <dimen name="text_menu_h3">16sp</dimen>
+    <dimen name="text_menu_h4">14sp</dimen>
+    <dimen name="text_body">16sp</dimen>
+    <dimen name="text_body2">12sp</dimen>
 </resources>

@@ -1,7 +1,6 @@
-package ru.thstdio.feature_movies.impl.presentation.list
+package ru.thstdio.feature_movies.impl.domain
 
-enum class MoviesListViewState {
-    MoviesLatest,
+enum class MoviesListCollection {
     MoviesNowPlay,
     MoviesPopular,
     MoviesTopRated,

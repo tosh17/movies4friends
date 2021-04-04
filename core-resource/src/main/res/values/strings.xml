@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="text_back">Back</string>
+    <string name="text_storyline">Storyline</string>
     <string name="review_string">%d reviews</string>
+    <string name="text_cast">Cast</string>
     <string name="time_string">%d min</string>
 </resources>

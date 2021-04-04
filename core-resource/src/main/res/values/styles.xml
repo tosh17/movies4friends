@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextH1" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">@dimen/text_menu_h1</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="TextH1.Primary" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/text_white_primary</item>
+    </style>
+    <style name="TextH2" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">@dimen/text_menu_h2</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="TextH2.Primary" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/text_white_primary</item>
+    </style>
+    <style name="TextH3" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">@dimen/text_menu_h3</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="TextH3.Secondary" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/text_white_secondary</item>
+    </style>
+</resources>
