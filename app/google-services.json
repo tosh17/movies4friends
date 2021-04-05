@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "695547972648",
+    "project_id": "movies4friend-c811b",
+    "storage_bucket": "movies4friend-c811b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695547972648:android:4ea22572fa84fb1fb7f91d",
+        "android_client_info": {
+          "package_name": "ru.thstdio.movies4friends"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "695547972648-2omf7m9tjo888snajd3v8fbesm29foeh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ru.thstdio.movies4friends",
+            "certificate_hash": "d28314b34466c9d7f4abcbe822d323efc4159a91"
+          }
+        },
+        {
+          "client_id": "695547972648-jf80uru7g60recjjt8mvjdtlkqb19p2e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBC5OLG3Ok-QsAUVIr9RolEjDvJDyuwCBM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "695547972648-jf80uru7g60recjjt8mvjdtlkqb19p2e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
