@@ -1,5 +1,7 @@
 <resources>
     <declare-styleable name="RatingView">
         <attr name="rating" format="float" />
+        <attr name="isBig" format="boolean" />
+        <attr name="clickable" format="boolean" />
     </declare-styleable>
 </resources>

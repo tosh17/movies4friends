@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/movie_graph"
-    app:startDestination="@id/moviesListFragment">
+    app:startDestination="@id/reviewOfTheMoviesFragment">
 
     <fragment
         android:id="@+id/moviesListFragment"
@@ -9,7 +9,8 @@
         android:label="MoviesListFragment" >
         <action
             android:id="@+id/action_moviesListFragment_to_detailMoviesFragment"
-            app:destination="@id/detailMoviesFragment" />
+            app:destination="@id/detailMoviesFragment"
+            />
     </fragment>
     <fragment
         android:id="@+id/detailMoviesFragment"
@@ -18,5 +19,12 @@
         <argument
             android:name="moviesId"
             app:argType="long" />
+        <action
+            android:id="@+id/action_detailMoviesFragment_to_reviewOfTheMoviesFragment"
+            app:destination="@id/reviewOfTheMoviesFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/reviewOfTheMoviesFragment"
+        android:name="ru.thstdio.feature_movies.impl.presentation.review.ReviewOfTheMoviesFragment"
+        android:label="ReviewOfTheMoviesFragment" />
 </navigation>

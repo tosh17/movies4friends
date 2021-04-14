@@ -40,42 +40,42 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Now Play"
-            android:tag="MoviesNowPlay"
+            android:contentDescription="MoviesNowPlay"
             />
         <com.google.android.material.tabs.TabItem
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Popular"
-            android:tag="MoviesPopular"
+            android:contentDescription="MoviesPopular"
             />
         <com.google.android.material.tabs.TabItem
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Top Rated"
-            android:tag="MoviesTopRated"
+            android:contentDescription="MoviesTopRated"
             />
         <com.google.android.material.tabs.TabItem
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Upcoming"
-            android:tag="MoviesUpcoming"
+            android:contentDescription="MoviesUpcoming"
             />
         <com.google.android.material.tabs.TabItem
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="M4F Popular"
-            android:tag="MoviesM4FPopular"
+            android:contentDescription="MoviesM4FPopular"
             />
         <com.google.android.material.tabs.TabItem
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="M4F Latest"
-            android:tag="MoviesM4FLatest"
+            android:contentDescription="MoviesM4FLatest"
             />
 
     </com.google.android.material.tabs.TabLayout>
@@ -92,7 +92,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tab_layout_title"
-        tools:listitem="@layout/view_holder_movie"
+        tools:listitem="@layout/movie_view_holder"
         app:spanCount="2" />
 
 

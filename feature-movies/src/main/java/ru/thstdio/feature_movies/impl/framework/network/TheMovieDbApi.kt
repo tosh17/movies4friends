@@ -1,7 +1,9 @@
 package ru.thstdio.feature_movies.impl.framework.network
 
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
+import ru.thstdio.feature_movies.impl.framework.network.response.*
 import ru.thstdio.feature_movies.impl.framework.network.response.ConfigurationDto
 import ru.thstdio.feature_movies.impl.framework.network.response.GenresListDto
 import ru.thstdio.feature_movies.impl.framework.network.response.MoviesListDto
@@ -36,4 +38,16 @@ internal interface TheMovieDbApi {
         @Query("page") page: Int,
         @Query("language") language: String = "ru"
     ): MoviesListDto
+
+    @GET("movie/{movie_id}")
+    suspend fun getDetailMovie(
+        @Path("movie_id") movieId: Long,
+        @Query("language") language: String = "ru"
+    ): MovieDetailDto
+
+    @GET("movie/{movie_id}/credits")
+    suspend fun getMovieCredits(
+        @Path("movie_id") movieId: Long,
+        @Query("language") language: String = "ru"
+    ): MovieCreditsDto
 }

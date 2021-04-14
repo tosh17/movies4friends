@@ -1,6 +1,7 @@
 package ru.thstdio.feature_movies.impl.presentation.view.rating
 
 import android.content.Context
+import android.content.res.Resources
 import android.util.AttributeSet
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -37,6 +38,37 @@ class RatingView : LinearLayout {
             attrs, R.styleable.RatingView, defStyle, 0
         )
         val rating = a.getFloat(R.styleable.RatingView_rating, 0f)
+        val isBig = a.getBoolean(R.styleable.RatingView_isBig, false)
+        val clickable = a.getBoolean(R.styleable.RatingView_clickable, false)
+        if (isBig) {
+            val bigHeight = dpToPx(36)
+            val bigWidth = dpToPx(42)
+            binding?.imageStar1?.let {star->
+                star.layoutParams.height = bigHeight
+                star.layoutParams.width = bigWidth
+                if (clickable) star.setOnClickListener { setRating(2f) }
+            }
+            binding?.imageStar2?.let {star->
+                star.layoutParams.height = bigHeight
+                star.layoutParams.width = bigWidth
+                if (clickable) star.setOnClickListener { setRating(4f) }
+            }
+            binding?.imageStar3?.let {star->
+                star.layoutParams.height = bigHeight
+                star.layoutParams.width = bigWidth
+                if (clickable) star.setOnClickListener { setRating(6f) }
+            }
+            binding?.imageStar4?.let {star->
+                star.layoutParams.height = bigHeight
+                star.layoutParams.width = bigWidth
+                if (clickable) star.setOnClickListener { setRating(8f) }
+            }
+            binding?.imageStar5?.let {star->
+                star.layoutParams.height = bigHeight
+                star.layoutParams.width = bigWidth
+                if (clickable) star.setOnClickListener { setRating(10f) }
+            }
+        }
         setRating(rating)
         a.recycle()
     }
@@ -59,5 +91,9 @@ class RatingView : LinearLayout {
             val color = if (index < countStart) activeColor else disableColor
             starView.setColorFilter(color)
         }
+    }
+
+    private fun dpToPx(dp: Int): Int {
+        return dp * Resources.getSystem().displayMetrics.density.toInt()
     }
 }

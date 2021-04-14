@@ -1,6 +1,7 @@
+include ':core-remote-db-impl'
 include ':feature-movies'
 include ':core-ui-util'
-include ':core-remote-db'
+include ':core-remote-db-api'
 include ':core-local-db'
 include ':core-network'
 include ':core-data'

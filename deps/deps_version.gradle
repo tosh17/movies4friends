@@ -2,6 +2,7 @@ ext.versions = [
         viewbinding                    : "1.4.4",
         coroutines                     : "1.4.3",
         okhttp                         : "4.9.0",
+        navigation                     : "2.3.5",
         retrofit                       : "2.9.0",
         kotlinx_serialization_json     : "1.1.0",
         kotlinx_serialization_convertor: "0.8.0",
@@ -14,7 +15,10 @@ ext.coroutines = [
         core   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines",
         android: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines"
 ]
-
+ext.navigation = [
+        fragment: "androidx.navigation:navigation-fragment-ktx:$versions.navigation",
+        ui      : "androidx.navigation:navigation-ui-ktx:$versions.navigation"
+]
 ext.http = [
         okhttp                 : "com.squareup.okhttp3:okhttp:$versions.okhttp",
         retrofit               : "com.squareup.retrofit2:retrofit:$versions.retrofit",
@@ -33,11 +37,12 @@ ext.room = [
 ]
 
 ext.firebase = [
-        platform: 'com.google.firebase:firebase-bom:26.7.0',
-        auth    : 'com.google.firebase:firebase-auth-ktx'
+        platform : 'com.google.firebase:firebase-bom:26.7.0',
+        auth     : 'com.google.firebase:firebase-auth-ktx',
+        firestore: 'com.google.firebase:firebase-firestore-ktx'
 ]
 ext.play_services = [
         auth: "com.google.android.gms:play-services-auth:19.0.0"
 ]
-ext.coil ="io.coil-kt:coil:$versions.coil"
+ext.coil = "io.coil-kt:coil:$versions.coil"
 

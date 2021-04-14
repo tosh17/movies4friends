@@ -15,7 +15,7 @@ class CacheMovies() {
     }
 
     fun getPage(page: Int): List<Movies> {
-        return if (cache.contains(page)) cache[page]!!
+        return if (cache.containsKey(page)) cache[page]!!
         else {
             error("Not found current page in cache")
         }

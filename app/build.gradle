@@ -61,7 +61,7 @@ dependencies {
     implementation(project(':core-resource'))
     implementation(project(':core-ui-util'))
     implementation(project(':core-local-db'))
-    implementation(project(':core-remote-db'))
+    implementation(project(':core-remote-db-api'))
     implementation(project(':core-network'))
 
     implementation(project(':feature-auth'))

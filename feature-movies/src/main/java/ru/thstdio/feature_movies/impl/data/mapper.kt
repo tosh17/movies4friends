@@ -1,10 +1,15 @@
 package ru.thstdio.feature_movies.impl.data
 
+import ru.thstdio.core_data.domain.Actor
 import ru.thstdio.core_data.domain.Genre
 import ru.thstdio.core_data.domain.Movies
+import ru.thstdio.core_data.domain.MoviesDetail
 import ru.thstdio.feature_movies.impl.domain.TheMoviesDbImageConfiguration
+import ru.thstdio.feature_movies.impl.framework.network.response.*
+import ru.thstdio.feature_movies.impl.framework.network.response.Cast
 import ru.thstdio.feature_movies.impl.framework.network.response.ConfigurationDto
 import ru.thstdio.feature_movies.impl.framework.network.response.GenreDto
+import ru.thstdio.feature_movies.impl.framework.network.response.MovieDetailDto
 import ru.thstdio.feature_movies.impl.framework.network.response.MovieDto
 
 internal fun ConfigurationDto.toTheMoviesDbImageConfiguration(): TheMoviesDbImageConfiguration {
@@ -46,7 +51,39 @@ private fun createPreviewImgUrl(
     configuration: TheMoviesDbImageConfiguration
 ): String =
     when {
-        backdropPath != null -> configuration.secureBaseURL + configuration.backdropSizes[1] + backdropPath
         posterPath != null -> configuration.secureBaseURL + configuration.posterSizes[4] + posterPath
+        backdropPath != null -> configuration.secureBaseURL + configuration.backdropSizes[1] + backdropPath
+
         else -> ""
     }
+private fun createPreviewMaxImgUrl(
+    posterPath: String?, backdropPath: String?,
+    configuration: TheMoviesDbImageConfiguration
+): String =
+    when {
+        backdropPath != null -> configuration.secureBaseURL + configuration.backdropSizes.last() + backdropPath
+        posterPath != null -> configuration.secureBaseURL + configuration.posterSizes.last() + posterPath
+        else -> ""
+    }
+internal fun MovieDetailDto.toMoviesDetail(
+    configuration: TheMoviesDbImageConfiguration,
+    actors: List<Actor>
+): MoviesDetail =
+    MoviesDetail(
+        id = id,
+        title = this.title,
+        genres = this.genres.map { genreJson -> genreJson.toGenre() },
+        actors = actors,
+        runtime = this.runtime,
+        ratings = this.voteAverage.toFloat(),
+        numberOfRatings = this.voteCount,
+        backdrop = createPreviewMaxImgUrl(this.posterPath, this.backdropPath, configuration),
+        overview = this.overview
+    )
+
+internal fun Cast.toActor(configuration: TheMoviesDbImageConfiguration): Actor = Actor(
+    id = this.id,
+    name = this.name,
+    picture = configuration.secureBaseURL + configuration.backdropSizes.last()
+            + this.profilePath
+)

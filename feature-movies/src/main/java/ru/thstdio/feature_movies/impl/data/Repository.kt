@@ -3,6 +3,7 @@ package ru.thstdio.feature_movies.impl.data
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import ru.thstdio.core_data.domain.Genre
+import ru.thstdio.core_data.domain.MoviesDetail
 import ru.thstdio.feature_movies.impl.domain.MoviesListCollection
 import ru.thstdio.feature_movies.impl.domain.MoviesListResult
 import ru.thstdio.feature_movies.impl.domain.TheMoviesDbImageConfiguration
@@ -54,6 +55,18 @@ internal class Repository @Inject constructor(
                 result
             }
         }
+
+    suspend fun getMoviesDetail(id: Long): MoviesDetail {
+        val configuration = getConfigurationAndGenres().first
+        val actors = api.getMovieCredits(id).cast
+            .asSequence()
+            .filter { castItem -> castItem.profilePath != null }
+            .map { castItem -> castItem.toActor(configuration) }
+            .toList()
+        val cinemaResponse = api.getDetailMovie(id)
+        val movies = cinemaResponse.toMoviesDetail(configuration, actors)
+        return movies
+    }
 
     private suspend fun getListTheMovieDbApi(type: MoviesListCollection, page: Int): MoviesListDto {
         return when (type) {

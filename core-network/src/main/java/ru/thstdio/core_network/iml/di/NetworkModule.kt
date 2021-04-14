@@ -15,7 +15,7 @@ import ru.thstdio.core_network.iml.data.interceptor.ApiHeaderInterceptor
 import javax.inject.Singleton
 
 @Module
-class NetworkModule {
+object NetworkModule {
     @Provides
     fun provideClient(interceptor: ApiHeaderInterceptor): OkHttpClient {
         return OkHttpClient().newBuilder()

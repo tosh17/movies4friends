@@ -1,37 +1,38 @@
-package ru.thstdio.feature_movies.impl.presentation.view
+package ru.thstdio.feature_movies.impl.presentation.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import ru.thstdio.core_data.domain.Movies
 
 import ru.thstdio.feature_movies.R
-import ru.thstdio.feature_movies.databinding.ViewHolderMovieBinding
+import ru.thstdio.feature_movies.databinding.MovieViewHolderBinding
+
 
 class MovieListAdapter(
     private val onClick: (Movies) -> Unit
-) : ListAdapter<Movies, MoviesListHolder>(MoviesListAdapterDiffUtil()) {
+) : PagingDataAdapter<Movies, MoviesListHolder>(MoviesListAdapterDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesListHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.view_holder_movie, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.movie_view_holder, parent, false)
         return MoviesListHolder(view, onClick)
     }
 
     override fun onBindViewHolder(holder: MoviesListHolder, position: Int) {
-        getItem(position).let { movie -> holder.onBindView(movie) }
+        getItem(position)?.let { movie -> holder.onBindView(movie) }
     }
 }
 
 class MoviesListHolder(view: View, private val onClick: (Movies) -> Unit) :
     RecyclerView.ViewHolder(view) {
-    private val binding = ViewHolderMovieBinding.bind(view)
+    private val binding = MovieViewHolderBinding.bind(view)
 
     @SuppressLint("SetTextI18n")
     fun onBindView(movie: Movies) {
@@ -42,7 +43,6 @@ class MoviesListHolder(view: View, private val onClick: (Movies) -> Unit) :
             error(R.drawable.ic_film)
             transformations(RoundedCornersTransformation(topLeft = 6f, topRight = 6f))
         }
-        // binding.textAge.text = "${cinema.adult.adultToAge()}+"
         setLike(movie.ratings > 8)
         binding.rating.setRating(movie.ratings)
         binding.textReviews.text =
